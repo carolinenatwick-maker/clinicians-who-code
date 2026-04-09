@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clinicians Who Code</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Syne:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav>
+  <div class="logo" onclick="go('home')">
+    <div class="logo-mark">Rx&gt;_</div>
+    <span class="logo-text">Clinicians Who Code</span>
+  </div>
+  <div class="nav-links">
+    <button class="nav-btn on" onclick="go('home',this)">Home</button>
+    <button class="nav-btn" onclick="go('tracks',this)">Tracks</button>
+    <button class="nav-btn" onclick="go('tutorials',this)">Tutorials</button>
+    <button class="nav-btn" onclick="go('tools',this)">Tools</button>
+    <button class="nav-btn" onclick="go('demo',this)">Demo</button>
+    <button class="nav-btn" onclick="go('about',this)">About</button>
+  </div>
+</nav>
+
+<!-- HOME -->
+<div id="p-home" class="page on">
+  <div class="hero">
+    <p class="hero-kicker">For every pre-health student &amp; clinician</p>
+    <h1>The bridge between<br><em>clinical training</em><br>and AI literacy.</h1>
+    <p class="hero-sub">Practical, role-specific tutorials for pre-med, pre-PT, pre-PA, nursing students, and working clinicians who want to be ahead of the curve — not left behind by it.</p>
+    <div class="btn-row">
+      <button class="btn btn-dark" onclick="go('tracks',document.querySelectorAll('.nav-btn')[1])">Find your track</button>
+      <button class="btn btn-outline" onclick="go('demo',document.querySelectorAll('.nav-btn')[4])">Try the live demo</button>
+    </div>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stat"><div class="stat-n">0.04%</div><div class="stat-l">of clinicians use AI tools</div></div>
+    <div class="stat"><div class="stat-n">3 hrs</div><div class="stat-l">avg daily documentation burden</div></div>
+    <div class="stat"><div class="stat-n">8</div><div class="stat-l">clinical tracks covered</div></div>
+    <div class="stat"><div class="stat-n">40+</div><div class="stat-l">prompt templates included</div></div>
+  </div>
+
+  <div class="section">
+    <p class="sec-label">What you will learn</p>
+    <p class="sec-title">From zero to building clinical AI tools</p>
+    <p class="sec-sub">No CS degree. No coding background required. Just a browser, a free API key, and the willingness to be early.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px">
+      <div class="module-card"><span class="module-level level-begin">Foundation</span><div class="module-title">What Claude Code actually is and why it matters for clinicians</div><div class="module-desc">A plain-language explainer of LLMs, APIs, and why documentation automation is the first domino.</div></div>
+      <div class="module-card"><span class="module-level level-begin">Foundation</span><div class="module-title">Your first clinical prompt — and why most people do it wrong</div><div class="module-desc">The difference between a prompt that works and one that wastes your time. Includes 10 ready-to-use clinical templates.</div></div>
+      <div class="module-card"><span class="module-level level-inter">Practical</span><div class="module-title">Build a SOAP note generator for your specialty in under an hour</div><div class="module-desc">Step-by-step: from blank screen to a working tool that drafts notes from a clinical scenario.</div></div>
+      <div class="module-card"><span class="module-level level-inter">Practical</span><div class="module-title">Prior auth letters, HEP instructions, and discharge summaries — automated</div><div class="module-desc">The three highest-ROI documentation tasks for most clinicians, fully automated with Claude.</div></div>
+      <div class="module-card"><span class="module-level level-adv">Advanced</span><div class="module-title">HIPAA, BAAs, and what you can actually do with patient data</div><div class="module-desc">The legal landscape explained clearly. What's allowed, what's not, and how to build compliantly from day one.</div></div>
+      <div class="module-card"><span class="module-level level-adv">Advanced</span><div class="module-title">Teach this to others — build a curriculum around clinical AI</div><div class="module-desc">For students who want to bring this knowledge into their programs, classmates, and future departments.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- TRACKS -->
+<div id="p-tracks" class="page">
+  <div class="section">
+    <p class="sec-label">Role-specific learning paths</p>
+    <p class="sec-title">Pick your clinical track</p>
+    <p class="sec-sub">Every track shares the same AI fundamentals. The use cases, prompt templates, and tools are tailored to how you actually practice — or will practice.</p>
+
+    <div class="path-grid">
+      <div class="path-card on" onclick="setTrack('premed',this)"><div class="path-icon" style="background:var(--blue3);color:var(--blue)">MD</div><div class="path-name">Pre-med / Medical student</div><div class="path-sub">H&amp;P, SOAP, DDx, clinical reasoning</div></div>
+      <div class="path-card" onclick="setTrack('prept',this)"><div class="path-icon" style="background:var(--green3);color:var(--green)">PT</div><div class="path-name">Pre-PT / DPT student</div><div class="path-sub">Eval notes, HEP, outcome measures</div></div>
+      <div class="path-card" onclick="setTrack('prepa',this)"><div class="path-icon" style="background:var(--amber3);color:var(--amber)">PA</div><div class="path-name">Pre-PA / PA student</div><div class="path-sub">Prior auth, notes, clinical reasoning</div></div>
+      <div class="path-card" onclick="setTrack('nursing',this)"><div class="path-icon" style="background:var(--coral3);color:var(--coral)">RN</div><div class="path-name">Nursing student / RN / NP</div><div class="path-sub">Handoffs, care plans, education</div></div>
+      <div class="path-card" onclick="setTrack('therapy',this)"><div class="path-icon" style="background:var(--purple3);color:var(--purple)">MH</div><div class="path-name">Pre-counseling / Therapist</div><div class="path-sub">Progress notes, treatment plans, psychoed</div></div>
+      <div class="path-card" onclick="setTrack('pharm',this)"><div class="path-icon" style="background:var(--green3);color:var(--green)">Rx</div><div class="path-name">Pharmacy student / PharmD</div><div class="path-sub">Counseling scripts, interactions, MTM</div></div>
+      <div class="path-card" onclick="setTrack('ot',this)"><div class="path-icon" style="background:var(--blue3);color:var(--blue)">OT</div><div class="path-name">Pre-OT / OT student</div><div class="path-sub">ADL notes, goals, patient education</div></div>
+      <div class="path-card" onclick="setTrack('tech',this)"><div class="path-icon" style="background:var(--amber3);color:var(--amber)">RT</div><div class="path-name">Rad / Lab / Resp tech</div><div class="path-sub">Reports, QC documentation, protocols</div></div>
+    </div>
+
+    <div id="rm-premed" class="roadmap on">
+      <h3>Pre-med &amp; medical student learning roadmap</h3>
+      <div class="rm-phase"><div class="rm-phase-label">Phase 1 — Foundations (week 1–2)</div><div class="rm-items">
+        <div class="rm-item"><div class="rm-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,8 8,2"/></svg></div>Set up Claude Code and get your API key</div>
+        <div class="rm-item"><div class="rm-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,8 8,2"/></svg></div>Write your first SOAP note with Claude</div>
+        <div class="rm-item"><div class="rm-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,8 8,2"/></svg></div>Understand prompt structure for clinical documentation</div>
+      </div></div>
+      <div class="rm-phase"><div class="rm-phase-label">Phase 2 — Core tools (week 3–5)</div><div class="rm-items">
+        <div class="rm-item"><div class="rm-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,8 8,2"/></svg></div>Build a differential diagnosis generator</div>
+        <div class="rm-item"><div class="rm-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,8 8,2"/></svg></div>Automate H&amp;P drafting from a clinical summary</div>
+        <div class="rm-item"><div class="rm-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,8 8,2"/></svg></div>Create a PubMed abstract summarizer</div>
+      </div></div>
+      <div class="rm-phase"><div class="rm-phase-label">Phase 3 — Teach &amp; lead (week 6+)</div><div class="rm-items">
+        <div class="rm-item"><div class="rm-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,8 8,2"/></svg></div>Run a workshop for your medical school cohort</div>
+        <div class="rm-item"><div class="rm-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,8 8,2"/></svg></div>Post your first build on LinkedIn</div>
+        <div class="rm-item"><div class="rm-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,8 8,2"/></svg></div>Partner with a faculty member on a research workflow</div>
+      </div></div>
+    </div>
+
+    <div id="rm-prept" class="roadmap">
+      <h3>Pre-PT &amp; DPT student learning roadmap</h3>
+      <div class="rm-phase"><div class="rm-phase-label">Phase 1 — Foundations (week 1–2)</div><div class="rm-items">
+        <div class="rm-item"><div class="rm-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,8 8,2"/></svg></div>Set up Claude and write your first PT eval note</div>
+        <div class="rm-item"><div class="rm-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,8 8,2"/></svg></div>Generate a HEP for a sample ortho case</div>
+        <div class="rm-item"><div class="rm-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,8 8,2"/></svg></div>Learn the basics of prompting for clinical specificity</div>
+      </div></div>
+      <div class="rm-phase"><div class="rm-phase-label">Phase 2 — Core tools (week 3–5)</div><div class="rm-items">
+        <div class="rm-item"><div class="rm-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,8 8,2"/></svg></div>Build a functional outcome measure explainer (LEFS, DASH, FOTO)</div>
+        <div class="rm-item"><div class="rm-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,8 8,2"/></svg></div>Automate prior auth letters for PT services</div>
+        <div class="rm-item"><div class="rm-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,8 8,2"/></svg></div>Create a discharge summary template</div>
+      </div></div>
+      <div class="rm-phase"><div class="rm-phase-label">Phase 3 — Teach &amp; lead (week 6+)</div><div class="rm-items">
+        <div class="rm-item"><div class="rm-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,8 8,2"/></svg></div>Bring a workshop to your DPT cohort</div>
+        <div class="rm-item"><div class="rm-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,8 8,2"/></svg></div>Build the Clinicians Who Code PT track content</div>
+        <div class="rm-item"><div class="rm-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,8 8,2"/></svg></div>Connect with a clinical site willing to pilot AI documentation</div>
+      </div></div>
+    </div>
+
+    <div id="rm-prepa" class="roadmap">
+      <h3>Pre-PA &amp; PA student learning roadmap</h3>
+      <div class="rm-phase"><div class="rm-phase-label">Phase 1 — Foundations</div><div class="rm-items">
+        <div class="rm-item"><div class="rm-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,8 8,2"/></svg></div>Write your first H&amp;P and SOAP with Claude</div>
+        <div class="rm-item"><div class="rm-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,8 8,2"/></svg></div>Build a prior auth letter generator</div>
+      </div></div>
+      <div class="rm-phase"><div class="rm-phase-label">Phase 2 — Core tools</div><div class="rm-items">
+        <div class="rm-item"><div class="rm-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,8 8,2"/></svg></div>Automate referral letters and specialist handoffs</div>
+        <div class="rm-item"><div class="rm-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,8 8,2"/></svg></div>Create a clinical reasoning prompt chain for complex cases</div>
+      </div></div>
+      <div class="rm-phase"><div class="rm-phase-label">Phase 3 — Teach &amp; lead</div><div class="rm-items">
+        <div class="rm-item"><div class="rm-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,8 8,2"/></svg></div>Run an AI literacy session for your PA cohort</div>
+        <div class="rm-item"><div class="rm-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,8 8,2"/></svg></div>Document and share three workflows publicly on LinkedIn</div>
+      </div></div>
+    </div>
+
+    <div id="rm-nursing" class="roadmap">
+      <h3>Nursing student, RN &amp; NP learning roadmap</h3>
+      <div class="rm-phase"><div class="rm-phase-label">Phase 1 — Foundations</div><div class="rm-items">
+        <div class="rm-item"><div class="rm-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,8 8,2"/></svg></div>Draft shift handoffs and SBAR communications with Claude</div>
+        <div class="rm-item"><div class="rm-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,8 8,2"/></svg></div>Generate plain-language patient discharge instructions</div>
+      </div></div>
+      <div class="rm-phase"><div class="rm-phase-label">Phase 2 — Core tools</div><div class="rm-items">
+        <div class="rm-item"><div class="rm-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,8 8,2"/></svg></div>Build a care plan generator for common diagnoses</div>
+        <div class="rm-item"><div class="rm-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,8 8,2"/></svg></div>Create medication teaching scripts for common drug classes</div>
+      </div></div>
+    </div>
+
+    <div id="rm-therapy" class="roadmap">
+      <h3>Pre-counseling &amp; therapist learning roadmap</h3>
+      <div class="rm-phase"><div class="rm-phase-label">Phase 1 — Foundations</div><div class="rm-items">
+        <div class="rm-item"><div class="rm-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,8 8,2"/></svg></div>Generate session progress notes from brief session summaries</div>
+        <div class="rm-item"><div class="rm-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,8 8,2"/></svg></div>Draft treatment plan goals aligned with evidence-based modalities</div>
+      </div></div>
+      <div class="rm-phase"><div class="rm-phase-label">Phase 2 — Core tools</div><div class="rm-items">
+        <div class="rm-item"><div class="rm-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,8 8,2"/></svg></div>Create psychoeducation handouts (CBT, DBT, ACT concepts)</div>
+        <div class="rm-item"><div class="rm-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,8 8,2"/></svg></div>Automate intake summary formatting</div>
+      </div></div>
+    </div>
+
+    <div id="rm-pharm" class="roadmap">
+      <h3>Pharmacy student &amp; PharmD learning roadmap</h3>
+      <div class="rm-phase"><div class="rm-phase-label">Phase 1 — Foundations</div><div class="rm-items">
+        <div class="rm-item"><div class="rm-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,8 8,2"/></svg></div>Generate patient counseling scripts for common medications</div>
+        <div class="rm-item"><div class="rm-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,8 8,2"/></svg></div>Summarize drug interaction literature for provider communication</div>
+      </div></div>
+      <div class="rm-phase"><div class="rm-phase-label">Phase 2 — Core tools</div><div class="rm-items">
+        <div class="rm-item"><div class="rm-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,8 8,2"/></svg></div>Build an MTM documentation workflow</div>
+        <div class="rm-item"><div class="rm-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,8 8,2"/></svg></div>Create patient-facing medication guides at 6th-grade reading level</div>
+      </div></div>
+    </div>
+
+    <div id="rm-ot" class="roadmap">
+      <h3>Pre-OT &amp; OT student learning roadmap</h3>
+      <div class="rm-phase"><div class="rm-phase-label">Phase 1 — Foundations</div><div class="rm-items">
+        <div class="rm-item"><div class="rm-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,8 8,2"/></svg></div>Draft occupational profile summaries and ADL eval notes</div>
+        <div class="rm-item"><div class="rm-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,8 8,2"/></svg></div>Write goal statements using COAST format with Claude</div>
+      </div></div>
+      <div class="rm-phase"><div class="rm-phase-label">Phase 2 — Core tools</div><div class="rm-items">
+        <div class="rm-item"><div class="rm-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,8 8,2"/></svg></div>Generate home modification recommendation letters</div>
+        <div class="rm-item"><div class="rm-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,8 8,2"/></svg></div>Create adaptive equipment education handouts</div>
+      </div></div>
+    </div>
+
+    <div id="rm-tech" class="roadmap">
+      <h3>Rad, lab &amp; resp tech learning roadmap</h3>
+      <div class="rm-phase"><div class="rm-phase-label">Phase 1 — Foundations</div><div class="rm-items">
+        <div class="rm-item"><div class="rm-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,8 8,2"/></svg></div>Summarize imaging or lab reports for provider handoffs</div>
+        <div class="rm-item"><div class="rm-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,8 8,2"/></svg></div>Generate QC documentation templates</div>
+      </div></div>
+      <div class="rm-phase"><div class="rm-phase-label">Phase 2 — Core tools</div><div class="rm-items">
+        <div class="rm-item"><div class="rm-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,8 8,2"/></svg></div>Build result trend summaries for chronic disease monitoring</div>
+        <div class="rm-item"><div class="rm-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,8 8,2"/></svg></div>Create patient prep instruction generators</div>
+      </div></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- TUTORIALS -->
+<div id="p-tutorials" class="page">
+  <div class="section">
+    <p class="sec-label">Step-by-step guides</p>
+    <p class="sec-title">Tutorials</p>
+    <p class="sec-sub">Real workflows. Copy-paste prompts. No fluff. Every tutorial has been tested by a clinician-in-training.</p>
+
+    <div class="track-tabs">
+      <button class="track-tab on" onclick="setTutTrack('all',this)">All</button>
+      <button class="track-tab" onclick="setTutTrack('setup',this)">Setup</button>
+      <button class="track-tab" onclick="setTutTrack('notes',this)">Clinical notes</button>
+      <button class="track-tab" onclick="setTutTrack('admin',this)">Admin tasks</button>
+      <button class="track-tab" onclick="setTutTrack('research',this)">Research</button>
+      <button class="track-tab" onclick="setTutTrack('build',this)">Build tools</button>
+    </div>
+
+    <div class="tut-list" id="tut-list">
+
+      <div class="tut-card" data-track="setup">
+        <div class="tut-card-header" onclick="toggleTut(this)">
+          <div class="tut-toggle">+</div>
+          <span class="module-level level-begin" style="flex-shrink:0">Beginner</span>
+          <span style="font-size:13px;font-weight:600;color:var(--ink)">Getting started: Claude Code setup in 10 minutes</span>
+        </div>
+        <div class="tut-body">
+          <div class="step"><div class="step-dot">1</div><div>
+            <h4>Install Node.js and Claude Code</h4>
+            <p>Open Terminal (Mac: Cmd+Space → "Terminal"). Paste and run both commands.</p>
+            <div class="code"><span class="co"># check node is installed (download from nodejs.org if not)</span>
+node --version
+
+<span class="co"># install claude code globally</span>
+npm install -g @anthropic-ai/claude-code</div>
+          </div></div>
+          <div class="step"><div class="step-dot">2</div><div>
+            <h4>Get your API key</h4>
+            <p>Go to console.anthropic.com → API Keys → Create Key. Copy it. Treat it like a password — never share it or put it in code you post publicly.</p>
+          </div></div>
+          <div class="step"><div class="step-dot">3</div><div>
+            <h4>Authenticate and test</h4>
+            <div class="code"><span class="ck">export</span> ANTHROPIC_API_KEY=<span class="cs">"sk-ant-your-key-here"</span>
+claude <span class="cs">"say hello as a friendly clinician"</span></div>
+          </div></div>
+          <div class="step"><div class="step-dot">4</div><div>
+            <h4>Run your first real clinical prompt</h4>
+            <div class="code">claude <span class="cs">"Write a SOAP note for a 28-year-old runner with 3-week anterior knee pain worsening with stairs. No trauma. Full ROM. Pain with patellar compression."</span></div>
+          </div></div>
+        </div>
+      </div>
+
+      <div class="tut-card" data-track="notes">
+        <div class="tut-card-header" onclick="toggleTut(this)">
+          <div class="tut-toggle">+</div>
+          <span class="module-level level-begin" style="flex-shrink:0">Beginner</span>
+          <span style="font-size:13px;font-weight:600;color:var(--ink)">Write any SOAP note from a clinical scenario in 60 seconds</span>
+        </div>
+        <div class="tut-body">
+          <div class="step"><div class="step-dot">1</div><div>
+            <h4>The anatomy of a great clinical prompt</h4>
+            <p>Include: patient demographics, chief complaint, timeline, relevant history, vitals, exam findings, and any labs or imaging. The more specific your input, the better the output.</p>
+          </div></div>
+          <div class="step"><div class="step-dot">2</div><div>
+            <h4>Use this proven prompt template</h4>
+            <div class="code">claude <span class="cs">"You are a clinical documentation assistant. Write a complete,
+professional SOAP note for the following scenario. Use standard
+medical formatting with S, O, A, P sections. Be thorough in the
+Assessment. Include a prioritized Plan with specific next steps.
+
+Patient: [demographics]
+CC: [chief complaint]
+HPI: [history]
+Exam: [findings]
+Data: [labs/imaging if any]"</span></div>
+          </div></div>
+          <div class="step"><div class="step-dot">3</div><div>
+            <h4>Save to a file for EHR copy-paste</h4>
+            <div class="code">claude <span class="cs">"[your prompt]"</span> > note_$(date +%Y%m%d).txt
+cat note_*.txt</div>
+          </div></div>
+        </div>
+      </div>
+
+      <div class="tut-card" data-track="admin">
+        <div class="tut-card-header" onclick="toggleTut(this)">
+          <div class="tut-toggle">+</div>
+          <span class="module-level level-inter" style="flex-shrink:0">Intermediate</span>
+          <span style="font-size:13px;font-weight:600;color:var(--ink)">Build a prior authorization letter generator</span>
+        </div>
+        <div class="tut-body">
+          <div class="step"><div class="step-dot">1</div><div>
+            <h4>Ask Claude Code to write the script for you</h4>
+            <div class="code">claude <span class="cs">"Write a Python script called prior_auth.py. Accept:
+patient name, ICD-10 code, requested service, and clinical
+justification as command-line arguments. Use the Anthropic SDK
+to generate a professional prior auth letter. Use argparse,
+include error handling, and save output to a .txt file."</span></div>
+          </div></div>
+          <div class="step"><div class="step-dot">2</div><div>
+            <h4>Install dependencies and run it</h4>
+            <div class="code">pip install anthropic
+python prior_auth.py \
+  --patient <span class="cs">"Jane D."</span> \
+  --icd <span class="cs">"M54.5"</span> \
+  --service <span class="cs">"Physical therapy x 12 visits"</span> \
+  --justification <span class="cs">"Lumbar radiculopathy, failed conservative care x 6 weeks"</span></div>
+          </div></div>
+          <div class="step"><div class="step-dot">3</div><div>
+            <h4>Iterate with Claude</h4>
+            <p>Paste the script back to Claude and say: "Make this more concise and add a section citing clinical necessity per Medicare LCD guidelines." Claude Code edits the file in place.</p>
+          </div></div>
+        </div>
+      </div>
+
+      <div class="tut-card" data-track="notes">
+        <div class="tut-card-header" onclick="toggleTut(this)">
+          <div class="tut-toggle">+</div>
+          <span class="module-level level-inter" style="flex-shrink:0">Intermediate</span>
+          <span style="font-size:13px;font-weight:600;color:var(--ink)">Generate a Home Exercise Program (HEP) from a PT eval</span>
+        </div>
+        <div class="tut-body">
+          <div class="step"><div class="step-dot">1</div><div>
+            <h4>The HEP prompt structure</h4>
+            <div class="code">claude <span class="cs">"Create a structured home exercise program for a patient
+with [diagnosis]. Include: exercise name, starting position,
+movement description, sets/reps/frequency, clear patient
+instructions, progression criteria, and red flags to stop.
+Format for easy printing."</span></div>
+          </div></div>
+          <div class="step"><div class="step-dot">2</div><div>
+            <h4>Convert to patient-readable language</h4>
+            <div class="code">claude <span class="cs">"Rewrite this HEP at a 6th grade reading level. Replace all
+medical terms with plain language. Keep every exercise the same."</span> < hep_draft.txt</div>
+          </div></div>
+        </div>
+      </div>
+
+      <div class="tut-card" data-track="research">
+        <div class="tut-card-header" onclick="toggleTut(this)">
+          <div class="tut-toggle">+</div>
+          <span class="module-level level-inter" style="flex-shrink:0">Intermediate</span>
+          <span style="font-size:13px;font-weight:600;color:var(--ink)">Summarize a PubMed paper for clinical application</span>
+        </div>
+        <div class="tut-body">
+          <div class="step"><div class="step-dot">1</div><div>
+            <h4>Copy the abstract or full text from PubMed</h4>
+            <p>From PubMed, click "Abstract" or access the full PDF. Copy the text you want summarized.</p>
+          </div></div>
+          <div class="step"><div class="step-dot">2</div><div>
+            <h4>Use this research summary prompt</h4>
+            <div class="code">claude <span class="cs">"Summarize this paper for a [specialty] clinician. Include:
+1. Clinical question studied
+2. Study design and key limitations
+3. Main findings in plain language
+4. How this should change or reinforce clinical practice
+5. Any industry funding or conflicts of interest
+
+[paste abstract or full text here]"</span></div>
+          </div></div>
+        </div>
+      </div>
+
+      <div class="tut-card" data-track="build">
+        <div class="tut-card-header" onclick="toggleTut(this)">
+          <div class="tut-toggle">+</div>
+          <span class="module-level level-adv" style="flex-shrink:0">Advanced</span>
+          <span style="font-size:13px;font-weight:600;color:var(--ink)">Build a clinical documentation web app with Claude Code</span>
+        </div>
+        <div class="tut-body">
+          <div class="step"><div class="step-dot">1</div><div>
+            <h4>Scaffold the project</h4>
+            <div class="code">mkdir clinic-tools && cd clinic-tools
+claude <span class="cs">"Create a simple Flask web app with a form that takes a
+clinical scenario as input and returns a SOAP note from the
+Anthropic API. Include a clean HTML frontend with basic CSS,
+and a /generate POST endpoint. Use environment variables for
+the API key. Write all files."</span></div>
+          </div></div>
+          <div class="step"><div class="step-dot">2</div><div>
+            <h4>Run it locally</h4>
+            <div class="code">pip install flask anthropic
+python app.py
+<span class="co"># open http://localhost:5000 in your browser</span></div>
+          </div></div>
+          <div class="step"><div class="step-dot">3</div><div>
+            <h4>Deploy so classmates can use it</h4>
+            <p>Push to GitHub, then deploy free on Railway.app or Render.com. Your entire cohort can access it from any browser — no setup on their end.</p>
+          </div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- TOOLS -->
+<div id="p-tools" class="page">
+  <div class="section">
+    <p class="sec-label">Vetted clinical AI toolkit</p>
+    <p class="sec-title">Tools for every workflow</p>
+    <p class="sec-sub">Every tool here has been evaluated for clinical workflow fit. Always follow your institution's data governance policy before using any tool with identifiable patient data.</p>
+
+    <div class="tools-grid">
+      <div class="tool-card"><div class="tool-header"><div class="tool-icon ti-green">CC</div><div><div class="tool-name">Claude Code</div><div class="tool-cat">Terminal / Agentic AI</div></div></div><div class="tool-desc">Write scripts, automate workflows, and build custom clinical tools from your terminal. No coding background needed to start — just describe what you want.</div><div class="tag-row"><span class="tag">Scripting</span><span class="tag">Automation</span><span class="tag">Free tier</span></div></div>
+
+      <div class="tool-card"><div class="tool-header"><div class="tool-icon ti-green">AI</div><div><div class="tool-name">Claude (claude.ai)</div><div class="tool-cat">Conversational AI</div></div></div><div class="tool-desc">Note drafting, differential generation, literature review, patient education, and protocol writing. The best starting point for any clinician.</div><div class="tag-row"><span class="tag">Notes</span><span class="tag">Research</span><span class="tag">Education</span></div></div>
+
+      <div class="tool-card"><div class="tool-header"><div class="tool-icon ti-blue">API</div><div><div class="tool-name">Anthropic API</div><div class="tool-cat">Developer / Builder</div></div></div><div class="tool-desc">Direct API access for building custom internal tools, EHR integrations, and department-wide automation pipelines. Python and JS SDKs available.</div><div class="tag-row"><span class="tag">Python</span><span class="tag">Custom tools</span><span class="tag">Advanced</span></div></div>
+
+      <div class="tool-card"><div class="tool-header"><div class="tool-icon ti-amber">Cur</div><div><div class="tool-name">Cursor IDE</div><div class="tool-cat">AI code editor</div></div></div><div class="tool-desc">AI-powered code editor. Write Python tools, data pipelines, and simple web apps with AI assistance at every step. Pairs perfectly with Claude Code.</div><div class="tag-row"><span class="tag">IDE</span><span class="tag">Python</span><span class="tag">Web apps</span></div></div>
+
+      <div class="tool-card"><div class="tool-header"><div class="tool-icon ti-purple">Ottr</div><div><div class="tool-name">Otter.ai / Whisper</div><div class="tool-cat">Transcription</div></div></div><div class="tool-desc">Record encounters (with consent), transcribe audio, then pipe the transcript to Claude for structured note generation. Game-changer for documentation speed.</div><div class="tag-row"><span class="tag">Transcription</span><span class="tag">Dictation</span><span class="tag">Encounters</span></div></div>
+
+      <div class="tool-card"><div class="tool-header"><div class="tool-icon ti-blue">n8n</div><div><div class="tool-name">n8n / Make</div><div class="tool-cat">No-code automation</div></div></div><div class="tool-desc">Connect AI outputs to EHR fields, email, Slack, or Google Drive without writing any code. Ideal for clinic-level automation workflows.</div><div class="tag-row"><span class="tag">No-code</span><span class="tag">Automation</span><span class="tag">Integrations</span></div></div>
+
+      <div class="tool-card"><div class="tool-header"><div class="tool-icon ti-amber">Rply</div><div><div class="tool-name">Replit</div><div class="tool-cat">Browser-based coding</div></div></div><div class="tool-desc">Build and run Python or web apps entirely in the browser. Zero local setup. Great for sharing tools with classmates who can't install software.</div><div class="tag-row"><span class="tag">No install</span><span class="tag">Sharing</span><span class="tag">Beginner-friendly</span></div></div>
+
+      <div class="tool-card"><div class="tool-header"><div class="tool-icon ti-coral">Ntbk</div><div><div class="tool-name">Jupyter Notebook</div><div class="tool-cat">Research / Data</div></div></div><div class="tool-desc">Combine code, output, and narrative in one document. Ideal for clinical data analysis, outcome tracking, and sharing findings with faculty or mentors.</div><div class="tag-row"><span class="tag">Research</span><span class="tag">Data analysis</span><span class="tag">Python</span></div></div>
+    </div>
+
+    <div class="hipaa-bar" style="margin-top:1.5rem">
+      <strong>HIPAA reminder:</strong> Never input real PHI into commercial AI tools without a signed Business Associate Agreement (BAA) with that vendor. Use de-identified or synthetic data for all tutorials and testing. When in doubt, contact your institution's compliance office before proceeding.
+    </div>
+  </div>
+</div>
+
+<!-- DEMO -->
+<div id="p-demo" class="page">
+  <div class="section">
+    <p class="sec-label">Interactive playground</p>
+    <p class="sec-title">Live clinical AI demo</p>
+    <p class="sec-sub">Select a task, enter a de-identified scenario, and see Claude's real output. This uses the exact same API you'll use when building your own tools.</p>
+
+    <div class="demo-shell">
+      <div class="demo-bar">
+        <div class="demo-dot" style="background:#ff5f57"></div>
+        <div class="demo-dot" style="background:#febc2e"></div>
+        <div class="demo-dot" style="background:#28c840"></div>
+        <div class="demo-bar-title">clinicians-who-code / live-demo / claude-sonnet-4</div>
+      </div>
+      <div class="demo-body">
+        <div class="demo-left">
+          <span class="demo-label">Task type</span>
+          <select class="demo-select" id="d-task">
+            <option value="soap">SOAP note from clinical scenario</option>
+            <option value="ddx">Differential diagnosis (prioritized)</option>
+            <option value="hep">Home exercise program (PT/OT)</option>
+            <option value="edu">Patient education — plain language</option>
+            <option value="priorauth">Prior authorization justification</option>
+            <option value="progress">Therapy progress note (mental health)</option>
+            <option value="protocol">Clinical protocol outline</option>
+            <option value="research">Research abstract — clinical summary</option>
+          </select>
+          <span class="demo-label">Clinical scenario (de-identified only)</span>
+          <textarea class="demo-ta" id="d-input" placeholder="Example: 34-year-old female, 6-week history of right shoulder pain after returning to overhead weightlifting. Pain with external rotation and abduction. No trauma. Positive empty can test. Negative drop arm. Full passive ROM."></textarea>
+          <button class="demo-run" id="d-btn" onclick="runDemo()">Run with Claude</button>
+          <div class="hipaa-bar">Never enter real patient names, DOB, MRN, or any identifying information. Use de-identified or fictional scenarios only.</div>
+        </div>
+        <div class="demo-right">
+          <span class="demo-label">Claude output</span>
+          <div class="demo-out" id="d-out"><span class="demo-placeholder">Your output will appear here. Enter a clinical scenario and click Run.</span></div>
+        </div>
+      </div>
+    </div>
+    <p style="font-size:11px;color:var(--ink3);margin-top:10px;text-align:center;font-family:'JetBrains Mono',monospace">Output is for educational purposes only and does not constitute clinical advice or replace clinical judgment.</p>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div id="p-about" class="page">
+  <div class="section">
+    <p class="sec-label">Who we are and why this exists</p>
+    <p class="sec-title">About Clinicians Who Code</p>
+    <p class="sec-sub">This platform was built by a pre-PT student who learned Claude Code and realized almost no one in healthcare knew how to use it. The mission: change that — across every clinical field.</p>
+
+    <div class="about-grid" style="margin-bottom:2rem">
+      <div class="about-card"><h3>The problem</h3><p>Clinicians spend 2–3 hours per day on documentation. AI tools exist right now that can cut that in half. But the people who need them most — clinicians and students — have no one to teach them. Tech companies don't speak clinical. Clinicians don't speak tech. This platform lives in the gap.</p></div>
+      <div class="about-card"><h3>The opportunity</h3><p>You are in the 0.04% of clinicians and pre-health students who are AI-literate. The profession is going to change whether or not you participate. The question is whether it gets shaped by people who understand clinical reality. This is your invitation to be one of them.</p></div>
+      <div class="about-card"><h3>The content structure</h3><p>Everything here is organized in three layers: foundations (universal AI literacy every clinician needs), tracks (role-specific use cases and tools for 8 clinical paths), and the builder tier (for students who want to teach, build tools, and lead in their programs and departments).</p></div>
+      <div class="about-card"><h3>How to contribute</h3><p>This platform grows through contributors across clinical tracks. If you are a pre-health student, resident, or practicing clinician who wants to build the content for your specialty — reach out. You get credit, community, and a platform. We get reach and clinical accuracy across every field.</p></div>
+    </div>
+
+    <p class="sec-label" style="margin-top:2rem">Community</p>
+    <p class="sec-title">Join the network</p>
+    <p class="sec-sub">Find collaborators, share what you build, and get feedback from peers across every clinical track.</p>
+
+    <div class="community-row">
+      <div class="comm-card"><div class="comm-tag">Newsletter</div><h4>Weekly dispatch</h4><p>One new tutorial, one new prompt template, and one build showcase — every week. Free forever.</p></div>
+      <div class="comm-card"><div class="comm-tag">Track leads</div><h4>Become a track contributor</h4><p>Own the content for your specialty. Build tutorials, review tools, and grow your clinical AI brand alongside ours.</p></div>
+      <div class="comm-card"><div class="comm-tag">Workshops</div><h4>Bring this to your program</h4><p>Ready-to-run workshop curriculum for DPT, PA, medical, and nursing programs. Bring AI literacy to your entire cohort.</p></div>
+      <div class="comm-card"><div class="comm-tag">LinkedIn</div><h4>Build in public</h4><p>Document what you build. The clinicians who share their work are the ones who get invited to speak, lead, and hire.</p></div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  clinicians who code &nbsp;·&nbsp; built by a pre-pt student who refused to wait &nbsp;·&nbsp; not clinical advice
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+{
+  "name": "clinicians-who-code",
+  "version": "1.0.0",
+  "description": "Clinical AI literacy platform for pre-health students and clinicians",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "echo 'Static site - no build needed'",
+    "deploy": "vercel --prod"
+  },
+  "keywords": [
+    "healthcare",
+    "ai",
+    "clinical",
+    "education",
+    "claude"
+  ],
+  "author": "Clinicians Who Code",
+  "license": "MIT",
+  "devDependencies": {
+    "vercel": "^37.0.0"
+  }
+}
