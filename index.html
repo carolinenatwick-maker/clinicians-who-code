@@ -21,7 +21,7 @@
     <button class="nav-btn" onclick="go('tracks',this)">Tracks</button>
     <button class="nav-btn" onclick="go('tutorials',this)">Tutorials</button>
     <button class="nav-btn" onclick="go('tools',this)">Tools</button>
-    <!-- <button class="nav-btn" onclick="go('demo',this)">Demo</button> -->
+    <button class="nav-btn" onclick="go('legal',this)">Legal</button>
     <button class="nav-btn" onclick="go('about',this)">About</button>
   </div>
 </nav>
@@ -459,6 +459,186 @@ python app.py
       </div>
     </div>
     <p style="font-size:11px;color:var(--ink3);margin-top:10px;text-align:center;font-family:'JetBrains Mono',monospace">Output is for educational purposes only and does not constitute clinical advice or replace clinical judgment.</p>
+  </div>
+</div>
+
+<!-- LEGAL -->
+<div id="p-legal" class="page">
+  <div class="section">
+    <p class="sec-label">Compliance &amp; Regulation</p>
+    <p class="sec-title">Legal landscape for clinical AI</p>
+    <p class="sec-sub">The intersection of healthcare regulation and AI is evolving fast. This is what you need to know before you build, deploy, or use AI tools in clinical settings.</p>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin-bottom:2.5rem">
+
+      <div class="module-card">
+        <span class="module-level level-begin">Foundation</span>
+        <div class="module-title">HIPAA overview and what PHI means</div>
+        <div class="module-desc">Protected Health Information (PHI) is any health data that can identify a patient. HIPAA requires safeguards for PHI in all forms—written, spoken, and electronic. If an AI tool processes identifiable patient data, HIPAA applies. De-identified data (properly stripped of 18 identifiers per Safe Harbor method) is not PHI.</div>
+      </div>
+
+      <div class="module-card">
+        <span class="module-level level-begin">Foundation</span>
+        <div class="module-title">Business Associate Agreements (BAAs)</div>
+        <div class="module-desc">A BAA is a contract required when a third party (like an AI vendor) handles PHI on your behalf. Without a signed BAA, using that tool with real patient data violates HIPAA. Major AI vendors (OpenAI, Anthropic, Google) offer BAAs for enterprise customers—but NOT for free-tier accounts. Always check before using.</div>
+      </div>
+
+      <div class="module-card">
+        <span class="module-level level-inter">Practical</span>
+        <div class="module-title">FDA regulation — when AI becomes a medical device</div>
+        <div class="module-desc">If your AI tool diagnoses, treats, prevents, or mitigates disease, the FDA may classify it as a Software as a Medical Device (SaMD). Clinical decision support that merely organizes data (like a note generator) is usually exempt. But anything that makes clinical recommendations may trigger FDA oversight. Check the FDA's CDS guidance before deploying.</div>
+      </div>
+
+      <div class="module-card">
+        <span class="module-level level-inter">Practical</span>
+        <div class="module-title">Malpractice and liability when AI is in the loop</div>
+        <div class="module-desc">Clinicians are legally responsible for all clinical decisions, even if informed by AI. "The AI told me to" is not a defense. If you use AI-generated content in patient care, you must review it for accuracy. Document your clinical reasoning. Malpractice insurers are watching this space—some policies explicitly exclude AI-related claims unless disclosed.</div>
+      </div>
+
+      <div class="module-card">
+        <span class="module-level level-adv">Advanced</span>
+        <div class="module-title">State laws, FTC, and regulations beyond HIPAA</div>
+        <div class="module-desc">State laws vary widely. California (CMIA), Texas (HB 300), and others have stricter privacy rules than federal HIPAA. The FTC enforces consumer protection and can penalize misleading AI claims. If you market an AI tool, ensure transparency about what it does and doesn't do. Some states are drafting AI-specific healthcare laws—stay current.</div>
+      </div>
+
+      <div class="module-card">
+        <span class="module-level level-adv">Advanced</span>
+        <div class="module-title">How to get institutional approval for AI tools</div>
+        <div class="module-desc">Most hospitals and clinics require vetting before clinical AI use. Steps: (1) Contact compliance or IT security, (2) Provide vendor documentation (SOC 2, BAA, security whitepaper), (3) Complete a risk assessment, (4) Get approval in writing. For academic projects, loop in your IRB early. Build relationships with compliance—they're gatekeepers but also allies.</div>
+      </div>
+
+    </div>
+
+    <p class="sec-label">Quick Reference</p>
+    <p class="sec-title">Can / Cannot grid</p>
+    <p class="sec-sub">Common scenarios and whether they're compliant without additional agreements.</p>
+
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.5rem;margin-bottom:2.5rem;overflow-x:auto">
+      <table style="width:100%;border-collapse:collapse;font-size:13px">
+        <thead>
+          <tr style="border-bottom:2px solid var(--border)">
+            <th style="text-align:left;padding:10px;font-weight:600;color:var(--ink)">Scenario</th>
+            <th style="text-align:center;padding:10px;font-weight:600;color:var(--ink);width:80px">Can?</th>
+            <th style="text-align:left;padding:10px;font-weight:600;color:var(--ink)">Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--border)">
+            <td style="padding:10px;color:var(--ink2)">Use ChatGPT free tier with de-identified patient scenarios for learning</td>
+            <td style="padding:10px;text-align:center"><span style="display:inline-block;padding:3px 10px;border-radius:20px;background:var(--green3);color:var(--green);font-weight:600;font-size:11px">YES</span></td>
+            <td style="padding:10px;color:var(--ink3);font-size:12px">De-identified data is not PHI</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border)">
+            <td style="padding:10px;color:var(--ink2)">Use ChatGPT free tier with real patient names/MRNs</td>
+            <td style="padding:10px;text-align:center"><span style="display:inline-block;padding:3px 10px;border-radius:20px;background:var(--coral3);color:var(--coral);font-weight:600;font-size:11px">NO</span></td>
+            <td style="padding:10px;color:var(--ink3);font-size:12px">HIPAA violation—no BAA</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border)">
+            <td style="padding:10px;color:var(--ink2)">Use Claude or GPT with enterprise account + signed BAA</td>
+            <td style="padding:10px;text-align:center"><span style="display:inline-block;padding:3px 10px;border-radius:20px;background:var(--green3);color:var(--green);font-weight:600;font-size:11px">YES</span></td>
+            <td style="padding:10px;color:var(--ink3);font-size:12px">Covered by BAA</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border)">
+            <td style="padding:10px;color:var(--ink2)">Build an internal tool that auto-generates notes from dictation</td>
+            <td style="padding:10px;text-align:center"><span style="display:inline-block;padding:3px 10px;border-radius:20px;background:var(--amber3);color:var(--amber);font-weight:600;font-size:11px">MAYBE</span></td>
+            <td style="padding:10px;color:var(--ink3);font-size:12px">Needs institutional approval + vendor BAA if using external API</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border)">
+            <td style="padding:10px;color:var(--ink2)">Deploy an AI diagnostic tool without FDA clearance</td>
+            <td style="padding:10px;text-align:center"><span style="display:inline-block;padding:3px 10px;border-radius:20px;background:var(--coral3);color:var(--coral);font-weight:600;font-size:11px">NO</span></td>
+            <td style="padding:10px;color:var(--ink3);font-size:12px">Likely requires FDA SaMD review</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border)">
+            <td style="padding:10px;color:var(--ink2)">Use AI to summarize published research papers</td>
+            <td style="padding:10px;text-align:center"><span style="display:inline-block;padding:3px 10px;border-radius:20px;background:var(--green3);color:var(--green);font-weight:600;font-size:11px">YES</span></td>
+            <td style="padding:10px;color:var(--ink3);font-size:12px">No PHI involved</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border)">
+            <td style="padding:10px;color:var(--ink2)">Share AI-generated clinical content on LinkedIn with real case details</td>
+            <td style="padding:10px;text-align:center"><span style="display:inline-block;padding:3px 10px;border-radius:20px;background:var(--coral3);color:var(--coral);font-weight:600;font-size:11px">NO</span></td>
+            <td style="padding:10px;color:var(--ink3);font-size:12px">HIPAA violation if identifiable</td>
+          </tr>
+          <tr>
+            <td style="padding:10px;color:var(--ink2)">Use AI for patient education handouts (reviewed by clinician)</td>
+            <td style="padding:10px;text-align:center"><span style="display:inline-block;padding:3px 10px;border-radius:20px;background:var(--green3);color:var(--green);font-weight:600;font-size:11px">YES</span></td>
+            <td style="padding:10px;color:var(--ink3);font-size:12px">As long as content is accurate and reviewed</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="sec-label">Common Questions</p>
+    <p class="sec-title">Legal FAQ</p>
+    <p class="sec-sub">The questions we hear most from students and early-career clinicians.</p>
+
+    <div class="tut-list">
+
+      <div class="tut-card">
+        <div class="tut-card-header" onclick="toggleTut(this)">
+          <div class="tut-toggle">+</div>
+          <span style="font-size:13px;font-weight:600;color:var(--ink)">Can I use free AI tools (ChatGPT, Claude) for school assignments with fake patient cases?</span>
+        </div>
+        <div class="tut-body" style="padding:1rem 1.25rem">
+          <p style="font-size:13px;color:var(--ink2);line-height:1.7"><strong>Yes,</strong> as long as the cases are entirely fictional or properly de-identified. If your assignment uses real patient data from clinical rotations, you must strip all 18 HIPAA identifiers (name, DOB, MRN, dates, zip code beyond first 3 digits, etc.). When in doubt, make it up or ask your instructor.</p>
+        </div>
+      </div>
+
+      <div class="tut-card">
+        <div class="tut-card-header" onclick="toggleTut(this)">
+          <div class="tut-toggle">+</div>
+          <span style="font-size:13px;font-weight:600;color:var(--ink)">My hospital doesn't have a BAA with any AI vendor. Can I still use AI tools at work?</span>
+        </div>
+        <div class="tut-body" style="padding:1rem 1.25rem">
+          <p style="font-size:13px;color:var(--ink2);line-height:1.7"><strong>Not with real PHI.</strong> You can use AI tools for non-patient tasks (e.g., drafting a protocol, summarizing research, learning). But entering real patient data without a BAA violates HIPAA. Talk to your compliance team about getting enterprise accounts with BAAs—or build internal tools that keep data on-premises.</p>
+        </div>
+      </div>
+
+      <div class="tut-card">
+        <div class="tut-card-header" onclick="toggleTut(this)">
+          <div class="tut-toggle">+</div>
+          <span style="font-size:13px;font-weight:600;color:var(--ink)">If I build an AI tool for my clinic, do I need FDA approval?</span>
+        </div>
+        <div class="tut-body" style="padding:1rem 1.25rem">
+          <p style="font-size:13px;color:var(--ink2);line-height:1.7"><strong>It depends.</strong> Clinical decision support (CDS) that helps clinicians make decisions (not makes them for you) is usually exempt. If your tool only organizes information or automates documentation, likely no FDA review. But if it interprets data to diagnose, treat, or recommend interventions, it may be a Software as a Medical Device (SaMD) requiring FDA clearance. Review the FDA's 2022 CDS guidance or consult regulatory counsel.</p>
+        </div>
+      </div>
+
+      <div class="tut-card">
+        <div class="tut-card-header" onclick="toggleTut(this)">
+          <div class="tut-toggle">+</div>
+          <span style="font-size:13px;font-weight:600;color:var(--ink)">Am I liable if AI gives me wrong information and I use it in patient care?</span>
+        </div>
+        <div class="tut-body" style="padding:1rem 1.25rem">
+          <p style="font-size:13px;color:var(--ink2);line-height:1.7"><strong>Yes.</strong> You are responsible for all clinical decisions, even if informed by AI. Standard of care requires you to verify AI-generated content before acting on it. If you blindly trust AI output and harm results, that's malpractice. Document your reasoning. Use AI as a tool, not a substitute for clinical judgment. Some malpractice carriers now ask about AI use—be transparent.</p>
+        </div>
+      </div>
+
+      <div class="tut-card">
+        <div class="tut-card-header" onclick="toggleTut(this)">
+          <div class="tut-toggle">+</div>
+          <span style="font-size:13px;font-weight:600;color:var(--ink)">What's the difference between de-identified data and anonymized data?</span>
+        </div>
+        <div class="tut-body" style="padding:1rem 1.25rem">
+          <p style="font-size:13px;color:var(--ink2);line-height:1.7"><strong>De-identified</strong> data under HIPAA Safe Harbor removes 18 specific identifiers and has no reasonable basis to re-identify individuals. <strong>Anonymized</strong> data is irreversibly stripped of all identifying info. For practical purposes: if you remove name, DOB, MRN, exact dates, and zip codes (keep only first 3 digits), and there's no way to re-identify the patient, it's de-identified and no longer PHI. Use de-identified data for learning and demos.</p>
+        </div>
+      </div>
+
+      <div class="tut-card">
+        <div class="tut-card-header" onclick="toggleTut(this)">
+          <div class="tut-toggle">+</div>
+          <span style="font-size:13px;font-weight:600;color:var(--ink)">Can I screenshot AI-generated notes and post them on social media to show what I built?</span>
+        </div>
+        <div class="tut-body" style="padding:1rem 1.25rem">
+          <p style="font-size:13px;color:var(--ink2);line-height:1.7"><strong>Only if fully de-identified or fictional.</strong> Even if you change the name, details like rare diagnoses, specific dates, or facility names can make a patient identifiable. Best practice: use completely made-up scenarios for demos. Never screenshot real patient notes, even with names redacted. One slip (a date, a hospital name, a unique case detail) can violate HIPAA and end your career.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="hipaa-bar" style="margin-top:2rem">
+      <strong>Disclaimer:</strong> This content is educational and not legal advice. Regulations vary by jurisdiction and change frequently. Consult your institution's compliance office and legal counsel before deploying AI tools in clinical settings.
+    </div>
+
   </div>
 </div>
 
